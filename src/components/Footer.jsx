@@ -2,7 +2,7 @@ export default function Footer() {
     return (
         <>
             <footer className="footer">
-                NPKnows · Bitter Gourd NPK Deficiency Classifier · Powered by Computer Vision
+                NPKnows · Bitter Gourd NPK Deficiency Classifier · Powered by Computer Vision · @2025 NU-Lipa
             </footer>
             <style>{`
                 .footer {
