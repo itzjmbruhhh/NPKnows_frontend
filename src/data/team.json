@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Kyla Jane Jamito",
+    "picture": "/team/kyla.png",
+    "groupRole": "Project Lead & Data Scientist",
+    "linkedin": "https://linkedin.com/in/kylajanejamito",
+    "github": "https://github.com/kylajamito",
+    "portfolio": null,
+    "cv": null,
+    "bio": "Directed the overall research direction and coordinated the team throughout the project lifecycle. Spearheaded data collection, preprocessing, and analysis of bitter gourd leaf samples to build a reliable foundation for NPK deficiency detection."
+  },
+  {
+    "id": 2,
+    "name": "Psalm Ashley Andal",
+    "picture": "/team/salm.jpeg",
+    "groupRole": "Data Scientist",
+    "linkedin": "https://linkedin.com/in/psalm-ashley-andal-7pa11369888",
+    "github": null,
+    "portfolio": null,
+    "cv": null,
+    "bio": "Focused on dataset curation, feature engineering, and model evaluation for the NPK classification pipeline. Contributed to statistical analysis and ensured data quality across all training and validation sets."
+  },
+  {
+    "id": 3,
+    "name": "Chester Jefferson Andaya",
+    "picture": "/team/ches.png",
+    "groupRole": "Full Stack Developer & Data Scientist",
+    "linkedin": "https://linkedin.com/in/chester-andaya-848653337",
+    "github": "https://github.com/itsmeches",
+    "portfolio": "https://itsmesurudoi.vercel.app/",
+    "cv": "/cv/ches_cv.pdf",
+    "bio": "Bridged data science and software engineering — built and integrated both the frontend interface and backend services while also contributing to dataset preparation and model experimentation for the deficiency classifier."
+  },
+  {
+    "id": 4,
+    "name": "John Michael Reyes",
+    "picture": "/team/jm.jpeg",
+    "groupRole": "Full Stack Developer, Data Scientist & ML Engineer",
+    "linkedin": "https://linkedin.com/in/itzjmbruhhh",
+    "github": "https://github.com/itzjmbruhhh",
+    "portfolio": "https://itzjmbruhhh.github.io/itzjmbruhhh-portfolio/",
+    "cv": "/cv/jm_cv.pdf",
+    "bio": "Wore multiple hats across the stack — engineered the machine learning model, developed and deployed the prediction API, and contributed to both frontend and backend development. Core technical driver behind NPKnows."
+  },
+  {
+    "id": 5,
+    "name": "Patrick Eva",
+    "picture": "/team/pat.png",
+    "groupRole": "Data Scientist",
+    "linkedin": "https://linkedin.com/in/patrickeva/",
+    "github": "https://github.com/patrickeva",
+    "portfolio": "https://ptrkportfolio.vercel.app/",
+    "cv": "/cv/pat_cv.pdf",
+    "bio": "Worked on data annotation, exploratory analysis, and model validation for the NPK leaf classification system. Helped ensure the dataset accurately represented real-world deficiency conditions in bitter gourd crops."
+  }
+]
