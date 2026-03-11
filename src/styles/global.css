@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Dark theme (default) ────────────────────────── */
+:root,
+[data-theme="dark"] {
+    --bg:        #0b0f0c;
+    --surface:   #111815;
+    --surface-2: #162019;
+    --border:    rgba(255,255,255,0.07);
+    --border-hover: rgba(74,222,128,.2);
+    --text:      #e8f0e9;
+    --muted:     #6b7f6e;
+    --green:     #4ade80;
+    --accent-bg: rgba(74,222,128,.07);
+    --badge-bg:  rgba(255,255,255,0.03);
+    --drop-bg:   rgba(255,255,255,.015);
+    --drop-hover-bg: rgba(74,222,128,.04);
+    --chip-bg:   rgba(255,255,255,.025);
+    --rec-bg:    rgba(255,255,255,.022);
+    --notes-bg:  rgba(255,255,255,.03);
+    --notes-border: rgba(255,255,255,.06);
+    --step-bg:   linear-gradient(135deg, rgba(74,222,128,.18), rgba(74,222,128,.04));
+    --step-border: rgba(74,222,128,.3);
+    --btn-bg:    linear-gradient(135deg, #1d3828, #142d1f);
+    --btn-hover: linear-gradient(135deg, #234530, #1a3625);
+    --error-bg:  rgba(239,68,68,.08);
+    --error-border: rgba(239,68,68,.22);
+    --error-text: #f87171;
+    --radial-1:  rgba(74,222,128,0.07);
+    --radial-2:  rgba(167,139,250,0.05);
+    --conf-track: rgba(255,255,255,.06);
+    --scan-color: #4ade80;
+    --shadow:    0 10px 40px rgba(0,0,0,.4);
+    --toggle-bg: rgba(255,255,255,0.06);
+    --toggle-border: rgba(255,255,255,0.12);
+    --font:   'Syne', sans-serif;
+    --mono:   'DM Mono', monospace;
+}
+
+/* ── Light theme ─────────────────────────────────── */
+[data-theme="light"] {
+    --bg:        #f0f5f1;
+    --surface:   #ffffff;
+    --surface-2: #f7faf7;
+    --border:    rgba(0,0,0,0.08);
+    --border-hover: rgba(22,163,74,.3);
+    --text:      #1a2e1c;
+    --muted:     #5a7260;
+    --green:     #16a34a;
+    --accent-bg: rgba(22,163,74,.08);
+    --badge-bg:  rgba(0,0,0,0.03);
+    --drop-bg:   rgba(0,0,0,.018);
+    --drop-hover-bg: rgba(22,163,74,.06);
+    --chip-bg:   rgba(0,0,0,.03);
+    --rec-bg:    rgba(0,0,0,.025);
+    --notes-bg:  rgba(0,0,0,.025);
+    --notes-border: rgba(0,0,0,.08);
+    --step-bg:   linear-gradient(135deg, rgba(22,163,74,.15), rgba(22,163,74,.04));
+    --step-border: rgba(22,163,74,.35);
+    --btn-bg:    linear-gradient(135deg, #dcfce7, #bbf7d0);
+    --btn-hover: linear-gradient(135deg, #bbf7d0, #a7f3c0);
+    --error-bg:  rgba(239,68,68,.06);
+    --error-border: rgba(239,68,68,.25);
+    --error-text: #dc2626;
+    --radial-1:  rgba(22,163,74,0.06);
+    --radial-2:  rgba(167,139,250,0.04);
+    --conf-track: rgba(0,0,0,.07);
+    --scan-color: #16a34a;
+    --shadow:    0 10px 40px rgba(0,0,0,.1);
+    --toggle-bg: rgba(0,0,0,0.05);
+    --toggle-border: rgba(0,0,0,0.12);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+}
+
+.root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background:
+            radial-gradient(ellipse 60% 40% at 10% 0%, var(--radial-1) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 35% at 90% 100%, var(--radial-2) 0%, transparent 70%);
+}
+
+/* ── Bento Card ─────────────────────────────── */
+.bento-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, box-shadow .3s, background .3s;
+}
+.bento-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(74,222,128,0.025), transparent 70%);
+    pointer-events: none;
+}
+[data-theme="light"] .bento-card::before {
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(22,163,74,0.025), transparent 70%);
+}
+.bento-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 0 1px rgba(74,222,128,.06), var(--shadow);
+}
+
+.card-label {
+    font-family: var(--mono); font-size: .62rem;
+    color: var(--muted); text-transform: uppercase;
+    letter-spacing: .13em; margin-bottom: .9rem;
+}
+
+/* ── Animations ─────────────────────────────── */
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes scan {
+    0%   { top: 0; opacity: 1; }
+    90%  { top: calc(100% - 3px); opacity: 1; }
+    100% { top: calc(100% - 3px); opacity: 0; }
+}
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: fadeSlideIn 0.35s ease forwards;
+}
