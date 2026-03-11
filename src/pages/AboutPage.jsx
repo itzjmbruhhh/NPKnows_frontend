@@ -84,9 +84,8 @@ function MemberCard({ member, index }) {
                             <a
                                 key={label}
                                 href={href}
-                                target={download ? "_self" : "_blank"}
+                                target="_blank"
                                 rel="noopener noreferrer"
-                                download={download || undefined}
                                 className={`member-link ${label === "CV" ? "link-cv" : ""}`}
                             >
                                 {icon}
