@@ -1,19 +1,38 @@
 import { useTheme } from "../context/ThemeContext";
+import { useRouter, PAGES } from "../context/RouterContext";
 
 export default function Header() {
     const { theme, toggle } = useTheme();
+    const { page, navigate } = useRouter();
 
     return (
         <header className="header">
-            <div className="logo-wrap">
-                <span className="logo-icon">🥒</span>
+            <button className="logo-wrap logo-btn" onClick={() => navigate(PAGES.DASHBOARD)}>
+                <span className="logo-icon">🍈</span>
                 <div>
                     <span className="logo-text">NPK<em>nows</em></span>
                     <span className="logo-sub">Bitter Gourd Intelligence</span>
                 </div>
-            </div>
+            </button>
 
             <div className="header-right">
+                <nav className="header-nav">
+                    <button
+                        className={`nav-link ${page === PAGES.DASHBOARD ? "nav-active" : ""}`}
+                        onClick={() => navigate(PAGES.DASHBOARD)}
+                    >
+                        <span className="nav-icon">🔬</span>
+                        Analyze
+                    </button>
+                    <button
+                        className={`nav-link ${page === PAGES.ABOUT ? "nav-active" : ""}`}
+                        onClick={() => navigate(PAGES.ABOUT)}
+                    >
+                        <span className="nav-icon">👥</span>
+                        About Us
+                    </button>
+                </nav>
+
                 <div className="header-badges">
                     <span className="badge">Computer Vision</span>
                     <span className="badge accent">AI-Powered</span>
@@ -53,12 +72,53 @@ export default function Header() {
                     flex-wrap: wrap;
                 }
                 .logo-wrap { display: flex; align-items: center; gap: .75rem; }
+                /* Logo as button */
+                .logo-btn {
+                    background: none; border: none; cursor: pointer;
+                    padding: 0; display: flex; align-items: center; gap: .75rem;
+                    transition: opacity .2s;
+                }
+                .logo-btn:hover { opacity: .8; }
                 .logo-icon { font-size: 2rem; filter: drop-shadow(0 0 10px rgba(74,222,128,.55)); }
                 [data-theme="light"] .logo-icon { filter: drop-shadow(0 0 10px rgba(22,163,74,.45)); }
                 .logo-text { font-size: 1.6rem; font-weight: 800; letter-spacing: -.03em; color: var(--text); line-height: 1; }
                 .logo-text em { font-style: normal; color: var(--green); }
                 .logo-sub { display: block; font-size: .65rem; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; font-family: var(--mono); margin-top: .15rem; }
+                /* Nav */
+                .header-nav {
+                    display: flex; align-items: center;
+                    gap: .25rem;
+                    background: var(--toggle-bg);
+                    border: 1px solid var(--toggle-border);
+                    border-radius: 12px;
+                    padding: .25rem;
+                }
+                .nav-link {
+                    display: flex; align-items: center; gap: .4rem;
+                    padding: .35rem .85rem;
+                    border-radius: 9px;
+                    border: none; background: none;
+                    font-family: var(--font); font-size: .78rem; font-weight: 600;
+                    color: var(--muted);
+                    cursor: pointer;
+                    transition: all .22s;
+                    letter-spacing: .01em;
+                    white-space: nowrap;
+                }
+                .nav-link:hover { color: var(--text); background: rgba(255,255,255,.05); }
+                [data-theme="light"] .nav-link:hover { background: rgba(0,0,0,.05); }
+                .nav-link.nav-active {
+                    color: var(--green);
+                    background: var(--accent-bg);
+                    border: 1px solid rgba(74,222,128,.22);
+                }
+                [data-theme="light"] .nav-link.nav-active {
+                    border-color: rgba(22,163,74,.25);
+                    color: #15803d;
+                }
+                .nav-icon { font-size: .85rem; }
                 .header-badges { display: flex; gap: .5rem; }
+                @media (max-width: 700px) { .header-badges { display: none; } }
                 .badge {
                     font-family: var(--mono); font-size: .62rem;
                     padding: .25rem .7rem; border-radius: 99px;
