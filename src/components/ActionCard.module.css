@@ -1,0 +1,74 @@
+.analyzeBtn {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid rgba(74, 222, 128, 0.28);
+    border-radius: 12px;
+    background: var(--btn-bg);
+    color: var(--green);
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.07);
+    margin-bottom: 1rem;
+}
+
+[data-theme="light"] .analyzeBtn {
+    border-color: rgba(22, 163, 74, 0.35);
+    color: #15803d;
+}
+
+.analyzeBtn:hover:not(:disabled) {
+    background: var(--btn-hover);
+    box-shadow: 0 0 30px rgba(74, 222, 128, 0.22);
+    transform: translateY(-1px);
+}
+
+.analyzeBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.analyzeBtn:disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+.btnIcon {
+    font-size: 1.1rem;
+}
+
+.errorBox {
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+    color: var(--error-text);
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.infoChips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.chip {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 8px;
+    background: var(--chip-bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+}
