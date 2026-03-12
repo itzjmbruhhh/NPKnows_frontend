@@ -1,0 +1,567 @@
+/* ── About root ──────────────────────────────────────────────────────────── */
+.aboutRoot {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.aboutHero {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 2rem 1.75rem;
+}
+
+.heroInner {
+    position: relative;
+    z-index: 1;
+}
+
+.heroGlow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(74,222,128,.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+:global([data-theme="light"]) .heroGlow {
+    background: radial-gradient(circle, rgba(22,163,74,.1) 0%, transparent 70%);
+}
+
+.heroTag {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-family: var(--mono);
+    font-size: .62rem;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    background: var(--accent-bg);
+    border: 1px solid rgba(74,222,128,.25);
+    border-radius: 99px;
+    padding: .2rem .75rem;
+    margin-bottom: 1rem;
+}
+
+:global([data-theme="light"]) .heroTag {
+    border-color: rgba(22,163,74,.3);
+}
+
+.heroDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: .4; }
+}
+
+.heroTitle {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: .85rem;
+    max-width: 640px;
+}
+
+.heroTitle em {
+    font-style: normal;
+    color: var(--green);
+}
+
+.heroDesc {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 580px;
+    margin-bottom: 1.5rem;
+}
+
+.heroStats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.heroStat {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+}
+
+.statNum {
+    font-family: var(--mono);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+}
+
+.statLabel {
+    font-size: .68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-family: var(--mono);
+}
+
+.statDivider {
+    width: 1px;
+    height: 32px;
+    background: var(--border);
+}
+
+/* ── Members section ─────────────────────────────────────────────────────── */
+.membersSection {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.membersGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .75rem;
+}
+
+@media (max-width: 860px) {
+    .membersGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+    .membersGrid { grid-template-columns: 1fr; }
+}
+
+/* ── Member card tile ────────────────────────────────────────────────────── */
+.memberCard {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .85rem;
+    padding: 1.75rem 1.25rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color .3s, box-shadow .3s, transform .25s;
+    animation: fadeSlideIn .4s ease both;
+}
+
+.memberCard:hover {
+    border-color: rgba(74,222,128,.3);
+    box-shadow: 0 0 0 1px rgba(74,222,128,.08), 0 12px 40px rgba(0,0,0,.3);
+    transform: translateY(-3px);
+}
+
+:global([data-theme="light"]) .memberCard:hover {
+    border-color: rgba(22,163,74,.3);
+    box-shadow: 0 12px 40px rgba(0,0,0,.09);
+}
+
+.mcHoverShine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(74,222,128,.05) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform .55s ease;
+    pointer-events: none;
+}
+
+.memberCard:hover .mcHoverShine {
+    transform: translateX(100%);
+}
+
+.mcAvatarWrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+}
+
+.mcAvatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--border);
+    transition: border-color .3s;
+}
+
+.memberCard:hover .mcAvatar {
+    border-color: rgba(74,222,128,.4);
+}
+
+.mcAvatarFallback {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(74,222,128,.2), rgba(74,222,128,.05));
+    border: 2px solid rgba(74,222,128,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    font-family: var(--font);
+}
+
+.mcAvatarRing {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color .3s, box-shadow .3s;
+}
+
+.memberCard:hover .mcAvatarRing {
+    border-color: rgba(74,222,128,.35);
+    box-shadow: 0 0 16px rgba(74,222,128,.2);
+}
+
+.mcInfo {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    flex: 1;
+}
+
+.mcName {
+    font-size: .98rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.mcRole {
+    font-size: .68rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    line-height: 1.4;
+}
+
+.mcCta {
+    font-family: var(--mono);
+    font-size: .65rem;
+    color: var(--green);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity .25s, transform .25s;
+    letter-spacing: .06em;
+}
+
+.memberCard:hover .mcCta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Modal backdrop ──────────────────────────────────────────────────────── */
+.modalBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.78);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: backdropIn .2s ease;
+}
+
+:global([data-theme="light"]) .modalBackdrop {
+    background: rgba(0,0,0,.5);
+}
+
+@keyframes backdropIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Modal panel ─────────────────────────────────────────────────────────── */
+.modalPanel {
+    position: relative;
+    display: flex;
+    background: var(--surface);
+    border: 1px solid rgba(74,222,128,.22);
+    border-radius: 24px;
+    box-shadow: 0 0 0 1px rgba(74,222,128,.08), 0 40px 90px rgba(0,0,0,.65);
+    max-width: 700px;
+    width: 100%;
+    max-height: 88vh;
+    overflow: hidden;
+    animation: modalIn .32s cubic-bezier(.34,1.56,.64,1);
+}
+
+:global([data-theme="light"]) .modalPanel {
+    border-color: rgba(22,163,74,.2);
+    box-shadow: 0 40px 90px rgba(0,0,0,.18);
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(.9) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Modal close button ──────────────────────────────────────────────────── */
+.modalClose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+
+.modalClose:hover {
+    border-color: rgba(74,222,128,.3);
+    color: var(--text);
+}
+
+/* ── Modal left panel ────────────────────────────────────────────────────── */
+.modalLeft {
+    width: 200px;
+    flex-shrink: 0;
+    background: var(--surface-2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2.5rem 1.25rem 2rem;
+}
+
+.modalAvatarWrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+}
+
+.modalAvatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid rgba(74,222,128,.25);
+}
+
+.modalAvatarFallback {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(74,222,128,.2), rgba(74,222,128,.05));
+    border: 2px solid rgba(74,222,128,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--green);
+    font-family: var(--font);
+}
+
+.modalAvatarRing {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid rgba(74,222,128,.3);
+}
+
+.modalAvatarGlow {
+    position: absolute;
+    inset: -24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,222,128,.14) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.modalLinksCol {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    width: 100%;
+}
+
+/* ── Modal right panel ───────────────────────────────────────────────────── */
+.modalRight {
+    flex: 1;
+    padding: 2.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+.modalRoleTag {
+    font-family: var(--mono);
+    font-size: .6rem;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    background: var(--accent-bg);
+    border: 1px solid rgba(74,222,128,.22);
+    border-radius: 99px;
+    padding: .2rem .75rem;
+    display: inline-block;
+    margin-bottom: .75rem;
+    align-self: flex-start;
+}
+
+:global([data-theme="light"]) .modalRoleTag {
+    border-color: rgba(22,163,74,.25);
+}
+
+.modalName {
+    font-size: clamp(1.35rem, 4vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.modalDivider {
+    width: 40px;
+    height: 2px;
+    background: var(--green);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    opacity: .5;
+}
+
+.modalBio {
+    font-size: .87rem;
+    color: var(--muted);
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+/* ── Modal links ─────────────────────────────────────────────────────────── */
+.modalLinksRow {
+    display: none;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.modalLink {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: var(--mono);
+    font-size: .66rem;
+    padding: .45rem .85rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--chip-bg);
+    text-decoration: none;
+    width: 100%;
+    transition: all .2s;
+}
+
+.modalLink:hover {
+    border-color: rgba(74,222,128,.35);
+    color: var(--green);
+    background: var(--accent-bg);
+}
+
+:global([data-theme="light"]) .modalLink:hover {
+    border-color: rgba(22,163,74,.35);
+}
+
+.modalLinkCv {
+    border-color: rgba(74,222,128,.25);
+    color: var(--green);
+    background: var(--accent-bg);
+}
+
+:global([data-theme="light"]) .modalLinkCv {
+    border-color: rgba(22,163,74,.3);
+}
+
+.modalLinkCv:hover {
+    background: rgba(74,222,128,.15) !important;
+}
+
+/* ── Responsive modal ────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+    .modalPanel {
+        flex-direction: column;
+        max-height: 90vh;
+    }
+
+    .modalLeft {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        flex-direction: row;
+        gap: 1rem;
+        padding: 1.25rem;
+        align-items: center;
+    }
+
+    .modalAvatarWrap {
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+    }
+
+    .modalAvatar,
+    .modalAvatarFallback {
+        width: 64px;
+        height: 64px;
+    }
+
+    .modalAvatarFallback {
+        font-size: 1.5rem;
+    }
+
+    .modalAvatarRing {
+        inset: -3px;
+    }
+
+    .modalLinksCol {
+        display: none;
+    }
+
+    .modalLinksRow {
+        display: flex;
+    }
+
+    .modalRight {
+        padding: 1.25rem;
+    }
+
+    .modalLink {
+        width: auto;
+    }
+}
