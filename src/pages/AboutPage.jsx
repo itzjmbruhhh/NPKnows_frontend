@@ -200,6 +200,47 @@ export default function AboutPage() {
                     </div>
                 </div>
 
+                {/* ── Publication & Dataset ── */}
+                <BentoCard className={s.pubCard}>
+                    <div className={s.pubConference}>
+                        <div className={s.pubConfBadge}>
+                            <span className={s.pubConfDot} />
+                            <span>Featured</span>
+                        </div>
+                        <div className={s.pubConfInfo}>
+                            <span className={s.pubConfName}>ICMCR 2026</span>
+                            <span className={s.pubConfDetail}>
+                                International Conference on Machine Learning &amp; Computer Research
+                                &nbsp;·&nbsp; March 20–22, 2026 &nbsp;·&nbsp; Tokyo, Japan 🇯🇵
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className={s.pubDivider} />
+
+                    <div>
+                        <p className="card-label" style={{ marginBottom: ".65rem" }}>📎 Research Assets</p>
+                        <div className={s.pubLinkGrid}>
+                            {/*<a href="#" target="_blank" rel="noopener noreferrer" className={s.pubLinkCard}>*/}
+                            {/*    <div className={s.pubLinkIcon}>📄</div>*/}
+                            {/*    <div className={s.pubLinkBody}>*/}
+                            {/*        <span className={s.pubLinkTitle}>Paper Publication</span>*/}
+                            {/*        <span className={s.pubLinkDesc}>NPK Deficiency Detection in Bitter Gourd Using ResNet50</span>*/}
+                            {/*    </div>*/}
+                            {/*    <span className={s.pubLinkArrow}>↗</span>*/}
+                            {/*</a>*/}
+                            <a href="https://figshare.com/articles/dataset/AMPALAYA_LEAVES_LOCAL_AND_WEB/28612700" target="_blank" rel="noopener noreferrer" className={s.pubLinkCard}>
+                                <div className={s.pubLinkIcon}>🗄️</div>
+                                <div className={s.pubLinkBody}>
+                                    <span className={s.pubLinkTitle}>Dataset</span>
+                                    <span className={s.pubLinkDesc}>Annotated bitter gourd leaf images for NPK classification</span>
+                                </div>
+                                <span className={s.pubLinkArrow}>↗</span>
+                            </a>
+                        </div>
+                    </div>
+                </BentoCard>
+
             </main>
 
             {selected && (
